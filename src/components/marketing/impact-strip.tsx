@@ -1,6 +1,6 @@
 'use client';
 import { useRef } from 'react';
-import { useGSAP, gsap, ScrollTrigger } from '@/lib/motion/gsap-marketing';
+import { useGSAP, gsap } from '@/lib/motion/gsap-marketing';
 
 export function ImpactStrip() {
   const container = useRef<HTMLDivElement>(null);

@@ -44,7 +44,7 @@ export function generateAlgorithmicDraw(
   let totalWeight = pool.reduce((sum, item) => sum + item.count, 0);
 
   while (result.size < config.count && pool.length > 0) {
-    let r = Math.floor(Math.random() * totalWeight);
+    const r = Math.floor(Math.random() * totalWeight);
     let cumulative = 0;
     
     for (let i = 0; i < pool.length; i++) {
