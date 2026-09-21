@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function AdminWinnersPage() {
   const [winners, setWinners] = useState<any[]>([]);
@@ -71,7 +72,14 @@ export default function AdminWinnersPage() {
     }
   };
 
-  if (loading) return <div>Loading winners...</div>;
+  if (loading) {
+    return (
+      <div className="space-y-6">
+        <Skeleton className="h-24 w-[300px]" />
+        <Skeleton className="h-96 w-full" />
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">

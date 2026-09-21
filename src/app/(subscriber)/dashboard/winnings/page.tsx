@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function WinningsPage() {
   const [winnings, setWinnings] = useState<any[]>([]);
@@ -63,13 +64,23 @@ export default function WinningsPage() {
     }
   };
 
-  if (loading) return <div>Loading your winnings...</div>;
+  if (loading) {
+    return (
+      <div className="container py-10 space-y-6 max-w-4xl">
+        <Skeleton className="h-24 w-[300px]" />
+        <div className="grid gap-6">
+          <Skeleton className="h-48 w-full" />
+          <Skeleton className="h-48 w-full" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container py-10 space-y-6 max-w-4xl">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">My Winnings</h1>
-        <p className="text-muted-foreground">Upload proof of your golf scores to claim your draw prizes.</p>
+        <h1 className="text-display-m font-bold tracking-tight text-text">My Winnings</h1>
+        <p className="text-text-2 mt-1">Upload proof of your golf scores to claim your draw prizes.</p>
       </div>
 
       <div className="grid gap-6">

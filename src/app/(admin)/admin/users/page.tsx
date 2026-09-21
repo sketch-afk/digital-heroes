@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function AdminUsersPage() {
   const [users, setUsers] = useState<any[]>([]);
@@ -122,7 +123,14 @@ export default function AdminUsersPage() {
     }
   };
 
-  if (loading) return <div>Loading users...</div>;
+  if (loading) {
+    return (
+      <div className="space-y-6">
+        <Skeleton className="h-24 w-[300px]" />
+        <Skeleton className="h-[600px] w-full" />
+      </div>
+    );
+  }
 
   if (selectedUser) {
     const sub = selectedUser.subscriptions?.[0];
@@ -179,7 +187,11 @@ export default function AdminUsersPage() {
           </CardHeader>
           <CardContent>
             {loadingDetails ? (
-              <div>Loading scores...</div>
+              <div className="space-y-3">
+                <Skeleton className="h-16 w-full" />
+                <Skeleton className="h-16 w-full" />
+                <Skeleton className="h-16 w-full" />
+              </div>
             ) : userScores.length === 0 ? (
               <div className="text-muted-foreground">No scores found for this user.</div>
             ) : (

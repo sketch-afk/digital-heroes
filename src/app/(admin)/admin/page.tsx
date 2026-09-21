@@ -36,72 +36,72 @@ export default async function AdminDashboardPage() {
   const totalPending = (winners || []).filter(w => w.payment_status === 'pending').reduce((sum, w) => sum + w.prize_amount, 0);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Platform Overview</h1>
-        <p className="text-muted-foreground">High-level metrics and statistics for Digital Heroes.</p>
+        <h1 className="text-display-m font-bold tracking-tight text-text">Platform Overview</h1>
+        <p className="text-text-2 mt-1">High-level metrics and statistics for Digital Heroes.</p>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <Card className="bg-surface border-line">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Registered Users</CardTitle>
+            <CardTitle className="text-xs font-bold uppercase tracking-wider text-text-3">Total Registered Users</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{totalUsers || 0}</div>
-            <p className="text-xs text-muted-foreground mt-1">Platform subscribers</p>
+            <div className="text-3xl font-display font-bold text-text">{totalUsers || 0}</div>
+            <p className="text-xs text-text-3 mt-1">Platform subscribers</p>
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="bg-surface border-line">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Subscriptions</CardTitle>
+            <CardTitle className="text-xs font-bold uppercase tracking-wider text-text-3">Active Subscriptions</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-green-600">{activeSubs || 0}</div>
-            <p className="text-xs text-muted-foreground mt-1">Currently paying users</p>
+            <div className="text-3xl font-display font-bold text-charity">{activeSubs || 0}</div>
+            <p className="text-xs text-text-3 mt-1">Currently paying users</p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-surface border-line">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Generated Prize Pool</CardTitle>
+            <CardTitle className="text-xs font-bold uppercase tracking-wider text-text-3">Generated Prize Pool</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">₹{(totalPrizePool / 100).toFixed(2)}</div>
-            <p className="text-xs text-muted-foreground mt-1">Lifetime pool generated</p>
+            <div className="text-3xl font-display font-bold text-reward">₹{(totalPrizePool / 100).toFixed(0)}</div>
+            <p className="text-xs text-text-3 mt-1">Lifetime pool generated</p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-gradient-to-br from-surface to-surface-2 border-line">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-blue-600">Charity Contributions</CardTitle>
+            <CardTitle className="text-xs font-bold uppercase tracking-wider text-charity">Charity Contributions</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-blue-600">₹{(totalCharity / 100).toFixed(2)}</div>
-            <p className="text-xs text-muted-foreground mt-1">Lifetime raised for charities</p>
+            <div className="text-3xl font-display font-bold text-text">₹{(totalCharity / 100).toFixed(0)}</div>
+            <p className="text-xs text-text-3 mt-1">Lifetime raised for charities</p>
           </CardContent>
         </Card>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <Card>
+      <div className="grid gap-6 md:grid-cols-2">
+        <Card className="bg-surface border-line">
           <CardHeader>
-            <CardTitle>Draw Statistics</CardTitle>
-            <CardDescription>Overview of the monthly draws</CardDescription>
+            <CardTitle className="text-xl font-display">Draw Statistics</CardTitle>
+            <CardDescription className="text-text-3">Overview of the monthly draws</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="flex justify-between items-center p-3 bg-muted rounded-lg border">
-              <span className="font-medium text-sm uppercase">Published Draws</span>
-              <span className="font-bold text-xl">{publishedDraws || 0}</span>
+            <div className="flex justify-between items-center p-4 bg-surface-2 rounded-2xl border border-line">
+              <span className="font-bold text-sm uppercase text-text-2">Published Draws</span>
+              <span className="font-bold text-2xl font-display tabular-nums text-text">{publishedDraws || 0}</span>
             </div>
-            <div className="flex justify-between items-center p-3 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-lg border border-green-200 dark:border-green-800">
-              <span className="font-medium text-sm uppercase">Total Prizes Paid</span>
-              <span className="font-bold text-xl">₹{(totalPaidOut / 100).toFixed(2)}</span>
+            <div className="flex justify-between items-center p-4 bg-charity/10 text-charity rounded-2xl border border-charity/20">
+              <span className="font-bold text-sm uppercase">Total Prizes Paid</span>
+              <span className="font-bold text-2xl font-display tabular-nums">₹{(totalPaidOut / 100).toFixed(2)}</span>
             </div>
-            <div className="flex justify-between items-center p-3 bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-400 rounded-lg border border-yellow-200 dark:border-yellow-800">
-              <span className="font-medium text-sm uppercase">Prizes Pending</span>
-              <span className="font-bold text-xl">₹{(totalPending / 100).toFixed(2)}</span>
+            <div className="flex justify-between items-center p-4 bg-reward/10 text-reward rounded-2xl border border-reward/20">
+              <span className="font-bold text-sm uppercase">Prizes Pending</span>
+              <span className="font-bold text-2xl font-display tabular-nums">₹{(totalPending / 100).toFixed(2)}</span>
             </div>
           </CardContent>
         </Card>

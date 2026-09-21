@@ -25,32 +25,38 @@ export default async function AdminLayout({
   }
 
   return (
-    <div className="flex min-h-[calc(100vh-3.5rem)]">
+    <div className="flex min-h-[calc(100vh-3.5rem)] bg-bg">
       {/* Sidebar */}
-      <aside className="w-64 flex-col border-r bg-muted/40 p-4 hidden md:flex">
+      <aside className="w-64 flex-col border-r border-line bg-surface p-6 hidden md:flex">
         <nav className="space-y-2">
-          <h2 className="mb-4 text-lg font-semibold tracking-tight">Admin Control</h2>
+          <h2 className="mb-6 text-xl font-display font-bold tracking-tight text-text">Admin Control</h2>
+          <Link
+            href="/admin"
+            className="flex items-center rounded-[var(--radius-control)] px-4 py-3 text-sm font-medium text-text-2 transition-all hover:bg-surface-2 hover:text-text"
+          >
+            Overview
+          </Link>
           <Link
             href="/admin/draws"
-            className="flex items-center rounded-lg px-3 py-2 text-muted-foreground transition-all hover:bg-muted hover:text-primary"
+            className="flex items-center rounded-[var(--radius-control)] px-4 py-3 text-sm font-medium text-text-2 transition-all hover:bg-surface-2 hover:text-text"
           >
             Draw Management
           </Link>
           <Link
             href="/admin/users"
-            className="flex items-center rounded-lg px-3 py-2 text-muted-foreground transition-all hover:bg-muted hover:text-primary"
+            className="flex items-center rounded-[var(--radius-control)] px-4 py-3 text-sm font-medium text-text-2 transition-all hover:bg-surface-2 hover:text-text"
           >
             Users
           </Link>
           <Link
             href="/admin/winners"
-            className="flex items-center rounded-lg px-3 py-2 text-muted-foreground transition-all hover:bg-muted hover:text-primary"
+            className="flex items-center rounded-[var(--radius-control)] px-4 py-3 text-sm font-medium text-text-2 transition-all hover:bg-surface-2 hover:text-text"
           >
             Winners & Payouts
           </Link>
           <Link
             href="/admin/charities"
-            className="flex items-center rounded-lg px-3 py-2 text-muted-foreground transition-all hover:bg-muted hover:text-primary"
+            className="flex items-center rounded-[var(--radius-control)] px-4 py-3 text-sm font-medium text-text-2 transition-all hover:bg-surface-2 hover:text-text"
           >
             Charities
           </Link>
@@ -58,7 +64,7 @@ export default async function AdminLayout({
       </aside>
 
       {/* Main content */}
-      <main className="flex-1 p-6">
+      <main className="flex-1 p-8 overflow-y-auto">
         {children}
       </main>
     </div>

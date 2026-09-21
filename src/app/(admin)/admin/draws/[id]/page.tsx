@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useRouter, useParams } from "next/navigation";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function AdminDrawDetailPage() {
   const params = useParams();
@@ -69,7 +70,17 @@ export default function AdminDrawDetailPage() {
     }
   };
 
-  if (loading) return <div>Loading draw data...</div>;
+  if (loading) {
+    return (
+      <div className="space-y-6">
+        <Skeleton className="h-16 w-1/3" />
+        <div className="grid gap-6 md:grid-cols-2">
+          <Skeleton className="h-64 w-full" />
+          <Skeleton className="h-64 w-full" />
+        </div>
+      </div>
+    );
+  }
   if (!draw) return <div>Draw not found</div>;
 
   return (

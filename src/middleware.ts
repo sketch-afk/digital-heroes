@@ -46,6 +46,7 @@ export async function middleware(request: NextRequest) {
     !pathname.startsWith('/api/webhooks') &&
     !pathname.startsWith('/api/charities') &&
     !pathname.startsWith('/charities') &&
+    !pathname.startsWith('/how-it-works') &&
     pathname !== '/'
   ) {
     // no user, potentially respond by redirecting the user to the login page
